@@ -10,8 +10,8 @@ package:
 source:
   fn: assertthat_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/assertthat_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/assertthat/assertthat_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/assertthat_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/assertthat/assertthat_{{ version }}.tar.gz
   sha256: d73ef79b1e75293ed889a99571b237a95829c099f7da094d4763f83ea6fde5f2
 
 
