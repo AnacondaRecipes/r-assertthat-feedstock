@@ -1,4 +1,4 @@
-{% set version = '0.2.0' %}
+{% set version = '0.2.1' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -11,19 +11,20 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/assertthat_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/assertthat/assertthat_{{ version }}.tar.gz
-  sha256: d73ef79b1e75293ed889a99571b237a95829c099f7da094d4763f83ea6fde5f2
+  sha256: 85cf7fcc4753a8c86da9a6f454e46c2a58ffc70c4f47cac4d3e3bcefda2a9e9f
 
 build:
   merge_build_host: True  # [win]
   # If this is a new build for the same version, increment the build number.
   number: 0
+  noarch: generic
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: testthat
+# Suggests: testthat, covr
 requirements:
   build:
     - {{posix}}zip               # [win]
@@ -49,10 +50,11 @@ test:
 about:
   home: https://CRAN.R-project.org/package=assertthat
   license: GPL-3
-  summary: assertthat is an extension to stopifnot() that makes it easy to declare the pre and
-    post conditions that you code should satisfy, while also producing friendly error
-    messages so that your users know what they've done wrong.
+  summary: An extension to stopifnot() that makes it easy to declare  the pre and post conditions
+    that you code should satisfy, while also  producing friendly error messages so that
+    your users know what's gone wrong.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
@@ -64,20 +66,20 @@ extra:
 
 # Package: assertthat
 # Title: Easy Pre and Post Assertions
-# Version: 0.2.0
+# Version: 0.2.1
 # Authors@R:  person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre"))
-# Description: assertthat is an extension to stopifnot() that makes it easy to declare the pre and post conditions that you code should satisfy, while also producing friendly error messages so that your users know what they've done wrong.
+# Description: An extension to stopifnot() that makes it easy to declare  the pre and post conditions that you code should satisfy, while also  producing friendly error messages so that your users know what's gone wrong.
 # License: GPL-3
 # Imports: tools
-# Suggests: testthat
-# Collate: 'assert-that.r' 'on-failure.r' 'assertions-file.r' 'assertions-scalar.R' 'assertions.r' 'base.r' 'base-comparison.r' 'base-is.r' 'base-logical.r' 'base-misc.r' 'utils.r' 'validate-that.R'
+# Suggests: testthat, covr
 # RoxygenNote: 6.0.1
+# Collate: 'assert-that.r' 'on-failure.r' 'assertions-file.r' 'assertions-scalar.R' 'assertions.r' 'base.r' 'base-comparison.r' 'base-is.r' 'base-logical.r' 'base-misc.r' 'utils.r' 'validate-that.R'
 # NeedsCompilation: no
-# Packaged: 2017-04-10 19:00:43 UTC; hadley
+# Packaged: 2019-03-21 13:11:01 UTC; hadley
 # Author: Hadley Wickham [aut, cre]
 # Maintainer: Hadley Wickham <hadley@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2017-04-11 21:28:45 UTC
+# Date/Publication: 2019-03-21 14:53:46 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for
